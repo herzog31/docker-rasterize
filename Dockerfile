@@ -20,4 +20,4 @@ RUN mkdir -p /raster-root \
 COPY rasterize.js /raster-root/
 WORKDIR /raster-root
 
-ENTRYPOINT ["phantomjs", "/raster-root/rasterize.js"]
+ENTRYPOINT ["phantomjs", "--ignore-ssl-errors=yes", "/raster-root/rasterize.js"]
