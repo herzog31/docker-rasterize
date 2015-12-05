@@ -12,7 +12,8 @@ if (system.args.length < 3 || system.args.length > 5) {
     address = system.args[1];
     output = '/raster-output/'+system.args[2];
     page.viewportSize = { width: 600, height: 600 };
-    page.settings['javascriptEnabled'] = false
+    page.settings.javascriptEnabled = false
+    page.settings.resourceTimeout = 1000
     if (system.args.length > 3 && system.args[2].substr(-4) === ".pdf") {
         size = system.args[3].split('*');
         page.paperSize = size.length === 2 ? { width: size[0], height: size[1], margin: '0px' }
@@ -43,7 +44,7 @@ if (system.args.length < 3 || system.args.length > 5) {
             window.setTimeout(function () {
                 page.render(output);
                 phantom.exit();
-            }, 300);
+            }, 1000);
         }
     });
 }
